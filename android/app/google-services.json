@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "518346157887",
+    "project_id": "wordplaywonderlandver1",
+    "storage_bucket": "wordplaywonderlandver1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518346157887:android:ad10c661ec0b9f9bbded8a",
+        "android_client_info": {
+          "package_name": "com.example.word_play_wonderland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518346157887-90bck2l8dk12lv1lo7rcvsjsrsadktd8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq98G37itI0wXtkg4CiVrqXPTQsnxYjtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518346157887-90bck2l8dk12lv1lo7rcvsjsrsadktd8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
