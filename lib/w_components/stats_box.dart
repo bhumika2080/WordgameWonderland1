@@ -52,9 +52,10 @@ class StatsBox extends StatelessWidget {
           Expanded(
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
+                    backgroundColor: Colors.green,
                   ),
                   onPressed: () {
+                    // Provider.of<Controller>(context, listen: false).resetTimer();
                     keysMap.updateAll(
                         (key, value) => value = AnswerStage.notAnswered);
 

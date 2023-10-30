@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 
 class GridButton extends StatelessWidget {
-  final VoidCallback click;
-  final String text;
+  Function() click;
+  String text;
 
-  const GridButton(this.text, this.click, {Key? key}) : super(key: key);
+  GridButton(this.text, this.click);
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       style: ElevatedButton.styleFrom(
-        backgroundColor: text == '' ? const Color.fromARGB(0, 255, 255, 255) : Colors.white,
+        backgroundColor: const Color.fromARGB(
+            255, 61, 40, 40), // Set the button's background color
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),
       ),
       onPressed: click,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: text == '' ? const Color.fromARGB(0, 255, 255, 255) : Colors.black,
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
     );
   }
 }

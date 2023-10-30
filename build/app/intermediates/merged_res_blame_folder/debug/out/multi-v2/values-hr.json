@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.word_play_wonderland.app-mergeDebugResources-13:/values-hr/values-hr.xml",
+            "outputFile": "com.example.word_play_wonderland.app-mergeDebugResources-14:/values-hr/values-hr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\781e5567158e59d38ee2b89930f9808b\\transformed\\jetified-play-services-base-18.1.0\\res\\values-hr\\values.xml",
@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\f5aeeb70e4aa208ac830e747eaf33ddc\\transformed\\jetified-play-services-basement-18.2.0\\res\\values-hr\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "127",
+                        "endOffsets": "322"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1067",
+                        "endColumns": "131",
+                        "endOffsets": "1194"
+                    }
+                },
+                {
                     "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\6d3bbaf4594b8ed85e4722883be764b3\\transformed\\browser-1.4.0\\res\\values-hr\\values-hr.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -35,23 +52,6 @@
                         "startOffsets": "2242,2347,2447,2561",
                         "endColumns": "104,99,113,101",
                         "endOffsets": "2342,2442,2556,2658"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\58aa1384bde170d075503b845cfcf44c\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-hr\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "127",
-                        "endOffsets": "322"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1067",
-                        "endColumns": "131",
-                        "endOffsets": "1194"
                     }
                 },
                 {

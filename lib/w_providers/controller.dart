@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../w_data/keys_map.dart';
@@ -10,10 +12,16 @@ class Controller extends ChangeNotifier {
       isBackOrEnter = false,
       gameWon = false,
       gameCompleted = false;
-     var notEnoughLetters = false;
+  var notEnoughLetters = false;
   String correctWord = "";
   int currentTile = 0, currentRow = 0;
   List<TileModel> tilesEntered = [];
+
+  // //timer start
+  // late Timer gameTimer;
+  // int remainingSeconds = 100;
+  // bool timerRunning = false;
+  // // timer end
 
   setCorrectWord({required String word}) => correctWord = word;
 
@@ -22,15 +30,15 @@ class Controller extends ChangeNotifier {
       if (currentTile == 5 * (currentRow + 1)) {
         isBackOrEnter = true;
         checkWord();
-      }else{
-           notEnoughLetters = true;
+      } else {
+        notEnoughLetters = true;
       }
     } else if (value == 'BACK') {
       if (currentTile > 5 * (currentRow + 1) - 5) {
         currentTile--;
         tilesEntered.removeLast();
         isBackOrEnter = true;
-        notEnoughLetters =false;
+        notEnoughLetters = false;
       }
     } else {
       isBackOrEnter = false;
@@ -97,27 +105,62 @@ class Controller extends ChangeNotifier {
         if (tilesEntered[i].answerStage == AnswerStage.notAnswered) {
           tilesEntered[i].answerStage = AnswerStage.incorrect;
 
-         final results = keysMap.entries.where((element) =>
-          element.key == tilesEntered[i].letter);
-          if(results.single.value == AnswerStage.notAnswered){
-               keysMap.update(tilesEntered[i].letter, (value) =>
-           AnswerStage.incorrect);
+          final results = keysMap.entries
+              .where((element) => element.key == tilesEntered[i].letter);
+          if (results.single.value == AnswerStage.notAnswered) {
+            keysMap.update(
+                tilesEntered[i].letter, (value) => AnswerStage.incorrect);
           }
-         
         }
       }
     }
     currentRow++;
     checkLine = true;
 
+//timer
+    // if (!timerRunning) {
+    //   gameTimer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+    //     if (remainingSeconds == 0) {
+    //       timer.cancel(); // Timer expired, cancel it
+    //       gameWon = false;
+    //       gameCompleted = true; // Handle the lose condition
+    //     } else {
+    //       remainingSeconds--;
+    //       notifyListeners();
+    //     }
+    //   });
+    //   timerRunning = true;
+    // }
+//timer end
+
     if (currentRow == 6) {
       gameCompleted = true;
     }
 
     if (gameCompleted) {
+      // gameTimer.cancel(); //cancel timer
       calculateStats(gameWon: gameWon);
     }
 
     notifyListeners();
   }
+
+  // //timer start
+  // void startTimer() {
+  //   if (!timerRunning) {
+  //     gameTimer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+  //       if (remainingSeconds == 0) {
+  //         timer.cancel(); // Timer expired, cancel it
+  //         gameWon = false;
+  //         gameCompleted = true; // Handle the lose condition
+  //       } else {
+  //         remainingSeconds--;
+  //         notifyListeners();
+  //       }
+  //     });
+  //     timerRunning = true;
+  //   }
+  // }
+
+  // // timer end
 }

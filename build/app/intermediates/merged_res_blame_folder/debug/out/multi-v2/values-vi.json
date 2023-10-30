@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.word_play_wonderland.app-mergeDebugResources-13:/values-vi/values-vi.xml",
+            "outputFile": "com.example.word_play_wonderland.app-mergeDebugResources-14:/values-vi/values-vi.xml",
             "map": [
                 {
                     "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\7e9df2ac2213a6bd3cef0f2f27870d79\\transformed\\core-1.6.0\\res\\values-vi\\values-vi.xml",
@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\f5aeeb70e4aa208ac830e747eaf33ddc\\transformed\\jetified-play-services-basement-18.2.0\\res\\values-vi\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "123",
+                        "endOffsets": "318"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1071",
+                        "endColumns": "127",
+                        "endOffsets": "1194"
+                    }
+                },
+                {
                     "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\6d3bbaf4594b8ed85e4722883be764b3\\transformed\\browser-1.4.0\\res\\values-vi\\values-vi.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -35,23 +52,6 @@
                         "startOffsets": "2289,2406,2517,2631",
                         "endColumns": "116,110,113,104",
                         "endOffsets": "2401,2512,2626,2731"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\58aa1384bde170d075503b845cfcf44c\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-vi\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "123",
-                        "endOffsets": "318"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1071",
-                        "endColumns": "127",
-                        "endOffsets": "1194"
                     }
                 },
                 {

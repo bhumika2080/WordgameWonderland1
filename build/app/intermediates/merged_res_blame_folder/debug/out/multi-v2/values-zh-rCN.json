@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.word_play_wonderland.app-mergeDebugResources-13:/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "com.example.word_play_wonderland.app-mergeDebugResources-14:/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\7e9df2ac2213a6bd3cef0f2f27870d79\\transformed\\core-1.6.0\\res\\values-zh-rCN\\values-zh-rCN.xml",
@@ -38,23 +38,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\58aa1384bde170d075503b845cfcf44c\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-zh-rCN\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "199",
-                        "endColumns": "94",
-                        "endOffsets": "293"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "917",
-                        "endColumns": "98",
-                        "endOffsets": "1011"
-                    }
-                },
-                {
                     "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\6d3bbaf4594b8ed85e4722883be764b3\\transformed\\browser-1.4.0\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -69,6 +52,23 @@
                         "startOffsets": "1869,1952,2044,2145",
                         "endColumns": "82,91,100,92",
                         "endOffsets": "1947,2039,2140,2233"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\bhumi\\.gradle\\caches\\transforms-3\\f5aeeb70e4aa208ac830e747eaf33ddc\\transformed\\jetified-play-services-basement-18.2.0\\res\\values-zh-rCN\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "199",
+                        "endColumns": "94",
+                        "endOffsets": "293"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "917",
+                        "endColumns": "98",
+                        "endOffsets": "1011"
                     }
                 }
             ]

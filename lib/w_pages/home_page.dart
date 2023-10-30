@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:word_play_wonderland/firebase_auth/signup_page.dart';
 import '../firebase_queries/words.dart';
 import '../w_components/grid.dart';
 import '../w_components/keyboard_row.dart';
@@ -18,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late String _word;  // code for words list from firebase
+  late String _word; // code for words list from firebase
   late List<String> fiveLetterWords;
 
   @override
@@ -33,17 +34,17 @@ class _HomePageState extends State<HomePage> {
     // super.initState();
 
 // // code for random word from firebase start
-    
-  // final random = Random();
-  // _word = fiveLetterWords[random.nextInt(fiveLetterWords.length)];
 
-  // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-  //   Provider.of<Controller>(context, listen: false)
-  //       .setCorrectWord(word: _word);
-  // });
+    // final random = Random();
+    // _word = fiveLetterWords[random.nextInt(fiveLetterWords.length)];
 
-  super.initState();
-  _fetchAndSelectRandomWord();
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   Provider.of<Controller>(context, listen: false)
+    //       .setCorrectWord(word: _word);
+    // });
+
+    super.initState();
+    _fetchAndSelectRandomWord();
   }
 
   // Future<void> _fetchAndSelectRandomWord() async {
@@ -52,22 +53,16 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _fetchAndSelectRandomWord() async {
     fiveLetterWords = await fetchWordsFromFirebase();
-    fiveLetterWords = fiveLetterWords.where((word) => word.length == 5).toList();
+    fiveLetterWords =
+        fiveLetterWords.where((word) => word.length == 5).toList();
     _selectRandomWord();
   }
 
-
-  // void _selectRandomWord() {
-  //   final random = Random();
-  //   _word = fiveLetterWords[random.nextInt(fiveLetterWords.length)];
-  //   Provider.of<Controller>(context, listen: false).setCorrectWord(word: _word);
-  // }
   void _selectRandomWord() {
     final random = Random();
     _word = fiveLetterWords[random.nextInt(fiveLetterWords.length)];
     Provider.of<Controller>(context, listen: false).setCorrectWord(word: _word);
   }
-
 
 // // code for random word for firebase end
 
@@ -119,14 +114,14 @@ class _HomePageState extends State<HomePage> {
               },
               icon: const Icon(Icons.settings)),
 
-          // rules button
-          IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const Settings()));
-              },
-              icon: const Icon(Icons.settings)),
-          // rules button end
+          // // rules button
+          // IconButton(
+          //     onPressed: () {
+          //       Navigator.of(context).push(
+          //           MaterialPageRoute(builder: (context) => SignUpPage()));
+          //     },
+          //     icon: const Icon(Icons.settings)),
+          // // rules button end
         ],
       ),
       body: const Column(
@@ -135,6 +130,7 @@ class _HomePageState extends State<HomePage> {
             height: 2,
             thickness: 2,
           ),
+
           Expanded(flex: 12, child: Grid()),
           Expanded(
               flex: 4,

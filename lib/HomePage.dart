@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:word_play_wonderland/hangman.dart';
 import 'package:word_play_wonderland/tileshifter.dart';
 import 'package:word_play_wonderland/wordle.dart';
 
-import 'firebase_queries/read_words.dart';
-import 'firebase_queries/words.dart';
+// import 'cpu_timer/game_timer.dart';
+// import 'cpu_timer/timer_display.dart';
+
+// import 'firebase_queries/read_words.dart';
+// import 'firebase_queries/words.dart';
 
 class HomePageWidget extends StatefulWidget {
-
   // word getting logic start
   final List<QueryDocumentSnapshot<Map<String, dynamic>>> words;
   const HomePageWidget({Key? key, required this.words}) : super(key: key);
@@ -26,6 +28,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // final GameTimer gameTimer = GameTimer();-+
+
+  bool isAgainstCpuOpponent = false; // Initialize to false
+
+  // Add a method to update the variable when the user selects the option
+  void selectGameMode(bool isAgainstCpu) {
+    setState(() {
+      isAgainstCpuOpponent = isAgainstCpu;
+    });
+  }
+
 
   @override
   void initState() {
@@ -45,15 +59,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
           automaticallyImplyLeading: false,
           title: const Text(
-            'Page Title',
+            'Wordplay Wonderland',
             style: TextStyle(
               fontFamily: 'Outfit',
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(255, 0, 0, 0),
               fontSize: 22,
             ),
           ),
@@ -66,20 +80,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              //    ElevatedButton(
+              //   onPressed: () async {
+              //     // Delete the fetched words
+              //     FirestoreService firestoreService = FirestoreService();
+              //     await firestoreService.deleteWords(words.cast<QueryDocumentSnapshot<Map<String, dynamic>>>());
 
-
-            //    ElevatedButton(
-            //   onPressed: () async {
-            //     // Delete the fetched words
-            //     FirestoreService firestoreService = FirestoreService();
-            //     await firestoreService.deleteWords(words.cast<QueryDocumentSnapshot<Map<String, dynamic>>>());
-
-            //     // You can optionally update the UI or show a message here
-            //     print('Fetched words deleted');
-            //   },
-            //   child: const Text('Delete Words'),
-            // ),
-
+              //     // You can optionally update the UI or show a message here
+              //     print('Fetched words deleted');
+              //   },
+              //   child: const Text('Delete Words'),
+              // ),
 
               Row(
                 mainAxisSize: MainAxisSize.max,
@@ -87,7 +98,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Expanded(
                     child: SizedBox(
                       width: double.infinity,
-                      height: 500,
+                      height: 300,
                       child: Stack(
                         children: [
                           Padding(
@@ -105,9 +116,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           const AlignmentDirectional(0, 0),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                              'https://picsum.photos/seed/606/600',
+                                        // child: CachedNetworkImage(
+                                        //   imageUrl:
+                                        //       'https://picsum.photos/seed/606/600',
+                                        //   width: 565,
+                                        //   height: 532,
+                                        //   fit: BoxFit.cover,
+                                        // ),
+                                        child: Image.asset(
+                                          'assets/home_wordle.jpg', // Replace with the actual path to your local image
                                           width: 565,
                                           height: 532,
                                           fit: BoxFit.cover,
@@ -129,8 +146,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         style: ElevatedButton.styleFrom(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 24),
-                                          backgroundColor: Colors.white,
-                                          foregroundColor: Colors.black,
+                                          backgroundColor:
+                                              Color.fromARGB(255, 8, 51, 92),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 239, 222, 222),
                                           textStyle: const TextStyle(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 16,
@@ -153,9 +172,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           const AlignmentDirectional(0, 0),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                              'https://picsum.photos/seed/429/600',
+                                        child: Image.asset(
+                                          'assets/home_slidingpuzzle.jpg', // Replace with the actual path to your local image
                                           width: 565,
                                           height: 532,
                                           fit: BoxFit.cover,
@@ -171,14 +189,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const Board()),
+                                                    Board()),
                                           );
                                         },
                                         style: ElevatedButton.styleFrom(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 24),
-                                          backgroundColor: Colors.white,
-                                          foregroundColor: Colors.black,
+                                          backgroundColor:
+                                              Color.fromARGB(255, 8, 51, 92),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 239, 222, 222),
                                           textStyle: const TextStyle(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 16,
@@ -201,9 +221,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           const AlignmentDirectional(0, 0),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                              'https://picsum.photos/seed/147/600',
+                                        child: Image.asset(
+                                          'assets/home_hangman.jpg', // Replace with the actual path to your local image
                                           width: 565,
                                           height: 532,
                                           fit: BoxFit.cover,
@@ -219,14 +238,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const Board()),
+                                                    const GameScreen()),
                                           );
                                         },
                                         style: ElevatedButton.styleFrom(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 24),
-                                          backgroundColor: Colors.white,
-                                          foregroundColor: Colors.black,
+                                          backgroundColor:
+                                              Color.fromARGB(255, 8, 51, 92),
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 239, 222, 222),
                                           textStyle: const TextStyle(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 16,
@@ -274,7 +295,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   dotWidth: 16,
                                   dotHeight: 8,
                                   dotColor: Color.fromARGB(255, 101, 77, 143),
-                                  activeDotColor: Colors.purple,
+                                  activeDotColor:
+                                      Color.fromARGB(255, 239, 10, 63),
                                   paintStyle: PaintingStyle.stroke,
                                 ),
                               ),
@@ -286,6 +308,66 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                 ],
               ),
+              Column(
+                children: [
+                  // Radio button for Single Player
+                  ListTile(
+                    title: const Text(
+                      'Play Single Player OR',
+                      style: TextStyle(
+                        color: Colors.black, // Set the text color to black
+                      ),
+                    ),
+                    leading: Radio<String>(
+                      value: 'Single Player',
+                      groupValue: _model.selectedGameMode,
+                      onChanged: (value) {
+                        setState(() {
+                          _model.selectedGameMode = value;
+                        });
+                      },
+                      activeColor:
+                          Colors.black, // Set the radio button color to black
+                    ),
+                  ),
+
+                  // Radio button for Against CPU Opponent
+                  ListTile(
+                    title: const Text(
+                      'Play Against CPU Opponent',
+                      style: TextStyle(
+                        color: Colors.black, // Set the text color to black
+                      ),
+                    ),
+                    leading: Radio<String>(
+                      value: 'Against CPU Opponent',
+                      groupValue: _model.selectedGameMode,
+                      onChanged: (value) {
+                        setState(() {
+                          _model.selectedGameMode = value;
+
+                          // if (value == 'Against CPU Opponent') {
+                          //   // Call a function to activate the timer
+                          //   gameTimer.start(); // Start the timer
+                          // } else {
+                          //   gameTimer.reset();
+                          // }
+                        });
+                      },
+                      activeColor:
+                          Colors.black, // Set the radio button color to black
+                    ),
+                  ),
+
+              // Display the timer
+                  // TimerDisplay(gameTimer.secondsPassed),
+
+
+                ],
+              ),
+
+// end of radio button
+
             ],
           ),
         ),
@@ -297,6 +379,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 class HomePageModel {
   final unfocusNode = FocusNode();
   PageController? pageViewController;
+
+  String? selectedGameMode; // property to play single or against cpu
+
   int get pageViewCurrentIndex => pageViewController != null &&
           pageViewController!.hasClients &&
           pageViewController!.page != null
@@ -310,4 +395,17 @@ class HomePageModel {
   void dispose() {
     unfocusNode.dispose();
   }
+
+
+  // bool isAgainstCpuOpponent = false; // Initialize to false
+
+  // // Add a method to update the variable when the user selects the option
+  // void selectGameMode(bool isAgainstCpu) {
+  //   setState(() {
+  //     isAgainstCpuOpponent = isAgainstCpu;
+  //   });
+  // }
+
+
+
 }

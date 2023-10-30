@@ -1,36 +1,55 @@
+
 import 'package:flutter/material.dart';
-import 'GridButton.dart';
 
 class Grid extends StatelessWidget {
-  var numbers = [];
-  var size;
-  Function clickGrid;
+  final List<int> numbers;
+  final Size size;
+  final Function(int) onClick;
+  final Map<int, String> numberToLetter; // Add this line to receive the mapping
 
-  Grid(this.numbers, this.size, this.clickGrid, {Key? key}) : super(key: key);
+  const Grid(this.numbers, this.size, this.onClick, this.numberToLetter);
 
   @override
   Widget build(BuildContext context) {
-    var height = size.height;
+    return Container(
+      width: size.width,
+      child: GridView.builder(
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+        itemCount: numbers.length,
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          final tileNumber = numbers[index];
+          final letter = numberToLetter[tileNumber]; // Get the letter
 
-    return SizedBox(
-      height: height * 0.60,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            mainAxisSpacing: 5,
-            crossAxisSpacing: 5,
-          ),
-          itemCount: numbers.length,
-          itemBuilder: (context, index) {
-            return numbers[index] != 0
-                ? GridButton("${numbers[index]}", () {
-                    clickGrid(index);
-                  })
-                : const SizedBox.shrink();
-          },
-        ),
+          return GestureDetector(
+            onTap: () {
+              if (tileNumber != 0) {
+                onClick(index);
+              }
+            },
+            child: letter == null
+                ? Container() // Don't render anything if letter is null
+                : Container(
+                    margin: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      border: Border.all(),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      letter,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          color: Color.fromARGB(255, 0, 0, 0),  // Change text color to red
+                          decoration: TextDecoration.underline,  // Add an underline
+                          decorationColor: Color.fromARGB(255, 255, 255, 255),  // Set the underline color to yellow
+                        ),
+                    ),
+                  ),
+          );
+        },
       ),
     );
   }
